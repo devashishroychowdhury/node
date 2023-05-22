@@ -26,9 +26,9 @@ Example using the global `console`:
 
 ```js
 console.log('hello world');
-// Prints: hello world, to stdout
+// Prints: hello world, to browser console as stdout
 console.log('hello %s', 'world');
-// Prints: hello world, to stdout
+// Prints: hello world, to browser console as stdout
 console.error(new Error('Whoops, something bad happened'));
 // Prints error message and stack trace to stderr:
 //   Error: Whoops, something bad happened
@@ -133,6 +133,7 @@ writable stream to print log or info output. `stderr` is used for warning or
 error output. If `stderr` is not provided, `stdout` is used for `stderr`.
 
 ```js
+<!-- Using 'fs' filesysytem -->
 const output = fs.createWriteStream('./stdout.log');
 const errorOutput = fs.createWriteStream('./stderr.log');
 // Custom simple logger
@@ -418,14 +419,12 @@ console.table(Symbol());
 console.table(undefined);
 // undefined
 
-console.table([{ a: 1, b: 'Y' }, { a: 'Z', b: 2 }]);
-// ┌─────────┬─────┬─────┐
-// │ (index) │  a  │  b  │
-// ├─────────┼─────┼─────┤
-// │    0    │  1  │ 'Y' │
-// │    1    │ 'Z' │  2  │
-// └─────────┴─────┴─────┘
-
+console.table([{ a: 'Mango', b: 'Summer' }, { a: 'Apple', b: 'Winter' }]);
+____________________________________
+|  0  |    a   |    Mango  | Summer |
+|  1  |    b   |    Apple  | Winter |
+|_____|________|___________|________| 
+                                   
 console.table([{ a: 1, b: 'Y' }, { a: 'Z', b: 2 }], ['a']);
 // ┌─────────┬─────┐
 // │ (index) │  a  │
